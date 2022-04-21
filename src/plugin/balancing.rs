@@ -37,8 +37,6 @@ async fn get_balance_status(mut rpc: ClnRpc) -> Result<Vec<Channel>, Error> {
 
     match response {
         Response::ListPeers(res) => {
-            log::info!("inside match: {:?}", &res.peers);
-            log::info!("inside 2 match: {:?}", &res.peers);
             let mut channels: Vec<Channel> = vec!();
             for peer in &res.peers {
                 let channel = Channel{
