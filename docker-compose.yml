@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  bitcoind:
+    image: boltz/bitcoin-core:22.0
+    command: "-regtest"
+    ports:
+      - 18443:18443
+  clightning:
+    image: balanzierer/cln:latest
+    command: "--network regtest"
+    ports:
+      - 9735:9735

@@ -2,8 +2,11 @@
 extern crate serde_json;
 use std::path::{Path, PathBuf};
 use cln_plugin::{options, Builder};
+use serde::{Serialize, Deserialize};
 mod balancing;
 use tokio;
+
+use balanzierer::{Channel};
 
 #[derive(Clone, Debug)]
 pub struct PluginState {

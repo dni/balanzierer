@@ -3,6 +3,10 @@ name = "balanzierer"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "balanzierer"
+path = "src/lib.rs"
+
 [[bin]]
 name = "balanzierer-plugin"
 path = "src/plugin/main.rs"
@@ -23,3 +27,5 @@ cln-plugin = { path = "./lightning/plugins" }
 cln-rpc = { path = "./lightning/cln-rpc" }
 predicates = "2.1.1"
 assert_cmd = "2.0.4"
+indicatif = "0.16.2"
+console = "0.15.0"
