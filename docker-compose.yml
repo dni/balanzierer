@@ -2,12 +2,13 @@ version: "3.7"
 
 services:
   bitcoind:
+    hostname: bitcoind
     image: boltz/bitcoin-core:22.0
-    command: "-regtest"
-    ports:
+    command: "-regtest -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -rpcuser=balanzierer -rpcpassword=balanzierer"
+    expose:
       - 18443:18443
   clightning:
-    image: balanzierer/cln:latest
-    command: "--network regtest"
-    ports:
+    image: michael1011/cln:latest
+    entrypoint: "sh -c 'sleep 5 && lightningd --network regtest --bitcoin-rpcconnect=bitcoind --bitcoin-rpcport=18443 --bitcoin-rpcuser=balanzierer --bitcoin-rpcpassword=balanzierer'"
+    expose:
       - 9735:9735
