@@ -10,8 +10,10 @@ bcli() {
 
 lcli() {
   # args(i, cmd)
-  # echo "running cmd: $2 on node: $1"
-  docker exec balanzierer-clightning-$1 lightning-cli --network regtest $2
+  i=$1
+  shift # shift first argument so $@
+  echo "running cmd: $@ on node: $i"
+  docker exec balanzierer-clightning-$i lightning-cli --network regtest $@
 }
 
 lcli_all () {
